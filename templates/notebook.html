@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %} Notebook {% endblock %}
+{% block content %}
+<div align="center">
+    {% if user!=None %}
+    <h1>{{user.getName()}}'s notebook</h1>
+  <table class="table table-striped">
+      <tbody>
+    <tr>
+      <th>Note:</th>
+      <th>Date</th>
+    </tr>
+    {% for note in user.getNotes(): %}
+      <tr>
+          <td>{{note[0]}}</td>
+          <td>{{note[1]}} <button type="button" class="close" onclick="deleteNote({{note[2]}})"><span aria-hidden="true">&times;</span></button></td>
+      </tr>
+      {% endfor %}
+  </tbody>
+</table>
+
+    {% else %}
+    <h1>Notebook</h1>
+    {% endif %}
+
+    <form method="POST">
+        <textarea name="note" cols="45"> </textarea> <br>
+        <button class="btn btn-info" type="submit">Add</button>
+    </form>
+
+</div>
+{% endblock %}

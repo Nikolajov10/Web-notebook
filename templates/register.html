@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %} Register {% endblock %}
+{% block content %}
+<form method="POST">
+
+    <table class="table">
+  <tbody>
+  <tr>
+      <td>Name:</td>
+      <td><input type="text" name="name" id="name"></td>
+    </tr>
+    <tr>
+      <td>Email:</td>
+      <td><input type="email" name="email" id="email"></td>
+    </tr>
+    <tr>
+      <td>Password:</td>
+      <td><input type="password" name="password" id="password"> Your typing DNA are tracked</td>
+    </tr>
+    <tr>
+      <td>Confirm password:</td>
+      <td><input type="password" name="password2" id="password2"></td>
+    </tr>
+  <tr rowspan="2">
+      <td align="right">
+          <button type="submit" class="btn btn-info" onclick="regDna()">Register</button>
+      </td>
+  </tr>
+  </tbody>
+</table>
+</form>
+{% with messages=get_flashed_messages() %}
+{% if messages %}
+    {% for msg in messages %}
+        <p>{{msg}}</p>
+    {% endfor %}
+{% endif %}
+{% endwith %}
+
+{% endblock %}
